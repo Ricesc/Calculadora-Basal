@@ -7,8 +7,10 @@
     <title>Calculadora de hidratación</title>
     <meta name="description"
         content="Calculadora de Hidratación para niños mediante los metodos Holliday Segar y Superficie Corporal">
-    <link rel="icon" type="image/png" href="icono.png">
+    <link rel="icon" href="calculator-solid.svg">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="JS/script.js" defer></script>
+    <script src="https://kit.fontawesome.com/16dacb14d5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,25 +18,37 @@
         <div id="calculadora">
             <div class="contenido">
                 <h1>Hidratación Basal</h1>
-                <form action="/" method="post">
-                    <label for="peso">Peso del paciente:</label>
-                    <input type="number" step="0.01" name="peso" id="peso" placeholder="Peso en kg" required min="1"
-                        max="600" />
-                    <p class="item" id="error">* Debe completar todos los datos</p>
-                    <button>Calcular</button>
-                    <p class="item resultado" id="flu">71cc/h</p>
-                    <p class="item resultado" id="man">m+m/2 : 105cc/h</p>
-                </form>
+                <label for="peso">Peso del paciente:</label>
+                <input type="number" step="0.01" name="peso" id="peso" placeholder="Peso en kg" min="1" max="600" />
+                <p class="item" id="error">* Debe completar todos los datos</p>
+                <button type="submit" id="calcular">Calcular</button>
+                <button class="fa-solid fa-recycle" id="clear"></button>
+                <p class="item resultado" id="vol"></p>
+                <p class="item resultado" id="flu"></p>
+                <p class="item resultado" id="man"></p>
+
+
             </div>
         </div>
         <div id="informacion">
             <div class="contenido">
+                <h2>¿Como se calcula?</h2>
                 <details>
-                    <summary>¿Como se calcula?</summary>
+                    <summary>Metodo Holliday-Segar</summary>
                     <ul>
                         <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
                         <li>Se suman 50cc por cada kilo de peso por arriba de 10kg, hasta 20kg</li>
                         <li>De 20kg para arriba, se suman 20cc por cada kilo adicional</li>
+                    </ul>
+                </details>
+                <details>
+                    <summary>Metodo Superficie Corporal</summary>
+                    <p>Cuando el niño pesa mas de 30kg, se utiliza un cálculo diferente: </p>
+                    <ul>
+                        <li>( (peso * 4) + 7) / (peso + 90)</li>
+                        <li>El resultado se multiplica por 1500 o por 2000 para hallar el valor del volumen diario en
+                            cc</li>
+                        <li>El medico decide cual de los dos resultados utilizar.</li>
                     </ul>
                 </details>
             </div>
