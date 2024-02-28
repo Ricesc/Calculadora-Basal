@@ -41,27 +41,30 @@ function calcular() {
         if (PESO <= 30) {
             console.log("el peso es: " + PESO);
             vol = holliday(PESO);
-            VOL.innerHTML = vol + " cc";
+            VOL.innerHTML = "Volumen diario: " + vol + " cc";
             VOL.style.display = "block";
 
+            mantenimiento = Math.round(vol / 24);
+            FLU.innerHTML = "Mantenimiento: " + mantenimiento + " cc/h";
+            FLU.style.display = "block";
+            MAN.innerHTML = "m+m/2: " + Math.floor(mantenimiento * 1.5) + " cc/h";
+            MAN.style.display = "block";
         } else {
             vol = superficie(PESO);
-            VOL.innerHTML = vol + " cc";
+            VOL.innerHTML = "Volumen diario: " + vol + " cc";
             VOL.style.display = "block";
+            FLU.style.display = "none";
+            MAN.style.display = "none";
 
         }
-        mantenimiento = Math.round(vol / 24);
-        FLU.innerHTML = mantenimiento + " cc/h";
-        FLU.style.display = "block";
-        MAN.innerHTML = Math.floor(mantenimiento * 1.5) + " cc/h";
-        MAN.style.display = "block";
         BTN_CLEAR.style.display = "inline"
     }
 }
 
 function holliday(valor) {
+    valor = parseInt(valor);
     console.log("holliday");
-
+    let dosis;
     if (valor <= 10) {
         dosis = valor * 100;
     } else if (valor > 10 && valor <= 20) {
@@ -73,16 +76,15 @@ function holliday(valor) {
 }
 
 function superficie(valor) {
+    valor = parseInt(valor);
     let opcion;
-    let opcion1;
-    let opcion2;
     let selected = false;
 
     console.log("superficie");
-    dosis = (((valor * 4) + 7) / (valor + 90));
+    let dosis = (((valor * 4) + 7) / (valor + 90));
     console.log(dosis);
-    opcion1 = Math.round(dosis * 1500);
-    opcion2 = Math.round(dosis * 2000);
+    let opcion1 = Math.floor(dosis * 1500);
+    let opcion2 = Math.floor(dosis * 2000);
 
     // se realiza un bucle hasta que el usuario seleccione una opción
     while (!selected) {
